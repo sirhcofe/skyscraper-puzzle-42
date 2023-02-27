@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 {
 	t_puzzle	*puzl;
 	int			size;
+	int			i;
 
 	size = check_args(argc, argv);
 	if (size == -1)
