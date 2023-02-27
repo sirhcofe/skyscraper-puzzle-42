@@ -19,11 +19,17 @@ typedef struct s_map
 
 typedef struct s_puzzle
 {
+	int			size;
 	int			**vsby;
 	t_map		**cell;
 }				t_puzzle;
 
+// initial checking and parsing
 int			check_args(int argc, char **argv);
-t_puzzle	*init(root, argv);
+t_puzzle	*init(int size, char **argv);
+
+// utils
+int			ft_atoi(const char *str);
+int			ft_isdigit(int c);
 
 #endif

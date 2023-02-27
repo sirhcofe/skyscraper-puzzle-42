@@ -21,11 +21,10 @@ int	error(int condition)
 int	main(int argc, char **argv)
 {
 	t_puzzle	*puzl;
-	int			root;
-	int			i;
+	int			size;
 
-	root = check_args(argc, argv);
-	if (root == -1)
+	size = check_args(argc, argv);
+	if (size == -1)
 		return (error(1));
-	puzl = init();
+	puzl = init(size, argv);
 }

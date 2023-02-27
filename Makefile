@@ -8,7 +8,9 @@ FLAGS		=	-Wall -Wextra -Werror
 OBJS_DIR	=	objects/
 OBJS		=	$(addprefix $(OBJS_DIR), $(notdir $(SRC:.c=.o)))
 
-SRC			=	check_args.c
+SRC			=	check_args.c		\
+				init.c				\
+				ft_atoi.c
 
 SRC_DIR		=	src
 
