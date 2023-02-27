@@ -28,8 +28,18 @@ typedef struct s_puzzle
 int			check_args(int argc, char **argv);
 t_puzzle	*init(int size, char **argv);
 
+// constraint propagation for obvious clues
+int			constraint_propag(t_puzzle *puzl);
+
+// checking if value assigning in cell doesn't have any conflicts
+int			assign_ok(t_puzzle *puzl, int i, int j, int value);
+
+// update clues row/column-wise after assigning values in cell of the same row/column
+void		update_possbl(t_puzzle *puzl, int i, int j, int value);
+
 // utils
 int			ft_atoi(const char *str);
 int			ft_isdigit(int c);
+void		print_cells(t_puzzle *puzl);
 
 #endif

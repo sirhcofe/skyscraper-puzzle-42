@@ -43,10 +43,10 @@ t_puzzle	*init(int size, char **argv)
 			puzl->cell[i][j].count = size;
 			puzl->cell[i][j].val = 0;
 			puzl->cell[i][j].fixed = 0;
-			puzl->cell[i][j].posbl = malloc(sizeof(int) * size);
-			k = 0;
+			puzl->cell[i][j].posbl = malloc(sizeof(int) * size + 1);
+			k = -1;
 			while (++k < size + 1)
-				puzl->cell[i][j].posbl[k] = k;
+				puzl->cell[i][j].posbl[k] = 0;
 		}
 	}
 	return (puzl);
