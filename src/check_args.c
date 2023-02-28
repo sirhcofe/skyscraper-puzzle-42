@@ -1,5 +1,11 @@
 #include "puzzle.h"
 
+/**
+ * This function checks if the number parsed is a perfect square. Returns
+ * its root if true, otherwise return -1
+ * 
+ * @param num the number parsed for checking
+*/
 int	is_perfect_square(int num)
 {
 	int	i;
@@ -15,6 +21,14 @@ int	is_perfect_square(int num)
 	}
 }
 
+/**
+ * This function ensures that the input parsed from the command line argument
+ * is sufficient to make a valid puzzle map, where (N^2 + 1) numbers of
+ * arguments is required to make a puzzle map of N size.
+ * 
+ * @param argc the number of arguments parsed from command line
+ * @param argv the arguments parsed
+*/
 int	check_args(int argc, char **argv)
 {
 	int	root;

@@ -12,9 +12,9 @@ void	ft_putstr(char *str)
 int	error(int condition)
 {
 	if (condition == 1)
-	{
 		ft_putstr("Invalid arguments\n");
-	}
+	else if (condition == 2)
+		ft_putstr("Invalid visibility constraint\n");
 	return (1);
 }
 
@@ -22,10 +22,12 @@ int	main(int argc, char **argv)
 {
 	t_puzzle	*puzl;
 	int			size;
-	int			i;
 
 	size = check_args(argc, argv);
 	if (size == -1)
 		return (error(1));
 	puzl = init(size, argv);
+	if (puzl == NULL)
+		return (error(2));
+	return (0);
 }

@@ -20,7 +20,7 @@ all:			$(NAME)
 
 $(NAME):		main.c $(ARC)
 			@echo "Compiling: main.c"
-			$(CC) $(FLAGS) -I. main.c $(OBJS) -o $(NAME)
+			$(CC) $(FLAGS) -fsanitize=address -g3 -I. main.c $(OBJS) -o $(NAME)
 
 $(ARC):			$(OBJS)
 			@ar rc $(ARC) $(OBJS)

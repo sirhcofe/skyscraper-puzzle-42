@@ -6,12 +6,17 @@
 /*   By: chenlee <chenlee@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:04:24 by chenlee           #+#    #+#             */
-/*   Updated: 2023/02/27 14:05:56 by chenlee          ###   ########.fr       */
+/*   Updated: 2023/02/28 22:35:20 by chenlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "puzzle.h"
 
+/**
+ * Function checks if the ascii parsed falls within number range
+ * 
+ * @param c ascii decimal value
+*/
 int	ft_isdigit(int c)
 {
 	if (c >= 48 && c <= 57)
@@ -19,6 +24,12 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
+/**
+ * Replica of the atoi() function, which converts the initial portion of
+ * the string to integer
+ * 
+ * @param str the string parsed for conversion
+*/
 int	ft_atoi(const char *str)
 {
 	int	i;
