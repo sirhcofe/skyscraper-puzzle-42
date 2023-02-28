@@ -11,9 +11,8 @@ OBJS		=	$(addprefix $(OBJS_DIR), $(notdir $(SRC:.c=.o)))
 SRC			=	check_args.c		\
 				init.c				\
 				ft_atoi.c			\
-				constr_propag.c		\
-				assign_ok.c			\
-				update_possbl.c		\
+				edge_clues.c		\
+				assign_candidate.c	\
 				print_cell.c
 
 SRC_DIR		=	src

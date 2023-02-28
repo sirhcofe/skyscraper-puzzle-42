@@ -1,15 +1,6 @@
 #include "puzzle.h"
 #include <stdio.h>
 
-int assign(t_puzzle *puzl, int row, int col, int value)
-{
-	puzl->cell[row][col].val = value;
-	if (assign_ok(puzl, row, col, value))
-		return (1);
-	update_possbl(puzl, row, col, value);
-	return (0);
-}
-
 int	fill_one(t_puzzle *puzl, int index, int dir)
 {
 	int	x;
@@ -30,6 +21,15 @@ int	fill_one(t_puzzle *puzl, int index, int dir)
 	}
 }
 
+/**
+ * This function will be called when a visibility constraint of value MAX 
+ * is found on opposing sides of the same row/column, this will generate a 
+ * group of ascending numbers along the row/column ranging from 1 to MAX
+ * 
+ * @param puzl struct containing cell array with its size, and visibility array
+ * @param index the index from a particular direction
+ * @param dir direction indicated either TOP, BOT, LFT, or RHT
+*/
 int	fill_maxval(t_puzzle *puzl, int index, int dir)
 {
 	int	i;
@@ -40,27 +40,17 @@ int	fill_maxval(t_puzzle *puzl, int index, int dir)
 	{
 		if (dir == TOP || dir == BOT)
 		{
-			// puzl->cell[i][index].val = ((dir == TOP) * (i + 1))
-			// 							+ ((dir == BOT) * (puzl->size - i));
-			// if (assign_ok(puzl, i, index, puzl->cell[i][index].val))
-			// 	return (1);
-			// update_possbl(puzl, i, index, puzl->cell[i][index].val);
 			value = ((dir == TOP) * (i + 1))
 						+ ((dir == BOT) * (puzl->size - i));
-			if (assign(puzl, i, index, value))
+			if (assign_candidate(puzl, i, index, value))
 				return (1);
 			puzl->cell[i][index].fixed = 1;
 		}
 		else if (dir == LFT || dir == RHT)
 		{
-			// puzl->cell[index][i].val = ((dir == LFT) * (i + 1))
-			// 							+ ((dir == RHT) * (puzl->size - i));
-			// if (assign_ok(puzl, i, index, puzl->cell[index][i].val))
-			// 	return (1);
-			// update_possbl(puzl, i, index, puzl->cell[index][i].val);
 			value = ((dir == LFT) * (i + 1))
 						+ ((dir == RHT) * (puzl->size - i));
-			if (assign(puzl, index, i, value))
+			if (assign_candidate(puzl, index, i, value))
 				return (1);
 			puzl->cell[i][index].fixed = 1;
 		}
@@ -68,7 +58,13 @@ int	fill_maxval(t_puzzle *puzl, int index, int dir)
 	return (0);
 }
 
-int	find_maxval_clue(t_puzzle *puzl)
+/**
+ * Goes through the visbility constraint clues to find obvious combinations 
+ * to assign the resulting candidate(s) into each cells
+ * 
+ * @param puzl struct containing cell array with its size, and visibility array
+*/
+int	find_clues(t_puzzle *puzl)
 {
 	int	i;
 	int	j;
@@ -89,9 +85,9 @@ int	find_maxval_clue(t_puzzle *puzl)
 	return (0);
 }
 
-int	constraint_propag(t_puzzle *puzl)
+int	solve_edge_clues(t_puzzle *puzl)
 {
-	if (find_maxval_clue(puzl))
+	if (find_clues(puzl))
 		return (1);
 	else
 	{

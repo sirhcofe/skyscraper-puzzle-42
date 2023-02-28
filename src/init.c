@@ -22,6 +22,20 @@ int	**visibility_init(int size, char **argv)
 	return (ret);
 }
 
+/**
+ * The initialization of the sturct, whereby the stuct holds 3 information:
+ * 1. The size of the puzzle
+ * 2. A double int array containing the visibility constraint clues
+ * 3. A double array of struct, where each struct denotes a cell in which holds:
+ *    3.1 The value assigned to the cell,
+ *    3.2 The list of possible candidates of a cell, which is defined by a array
+ *        of integers and the index (except 0) denotes the candidate values. A
+ *        number of 0 or 1 will be assigned to each index, which can be useful
+ *        to determine if the number has been used along the same row/column
+ * 
+ * @param size The size of the puzzle
+ * @param argv Arguments parsed from the command line
+*/
 t_puzzle	*init(int size, char **argv)
 {
 	t_puzzle	*puzl;

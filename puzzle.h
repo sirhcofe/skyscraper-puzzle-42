@@ -28,11 +28,11 @@ typedef struct s_puzzle
 int			check_args(int argc, char **argv);
 t_puzzle	*init(int size, char **argv);
 
-// constraint propagation for obvious clues
-int			constraint_propag(t_puzzle *puzl);
+// initial candidate assignment based on edge clues
+int			solve_edge_clues(t_puzzle *puzl);
 
 // checking if value assigning in cell doesn't have any conflicts
-int			assign_ok(t_puzzle *puzl, int i, int j, int value);
+int 		assign_candidate(t_puzzle *puzl, int row, int col, int value);
 
 // update clues row/column-wise after assigning values in cell of the same row/column
 void		update_possbl(t_puzzle *puzl, int i, int j, int value);

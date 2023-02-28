@@ -46,7 +46,7 @@ int	main(int argc, char **argv)
 	if (size == -1)
 		return (error(1));
 	puzl = init(size, argv);
-	if (constraint_propag(puzl))
+	if (solve_edge_clues(puzl))
 	{
 		ft_free(puzl);
 		return (error(2));
