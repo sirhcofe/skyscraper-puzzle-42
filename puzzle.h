@@ -42,5 +42,6 @@ void		update_possbl(t_puzzle *puzl, int i, int j, int value);
 int			ft_atoi(const char *str);
 int			ft_isdigit(int c);
 void		print_cells(t_puzzle *puzl);
+void		print_posbl_candidate(t_puzzle *puzl);
 
 #endif

@@ -21,10 +21,19 @@ void	update_possbl(t_puzzle *puzl, int i, int j, int value)
 		{
 			b = -1;
 			while (++b < puzl->size)
-				puzl->cell[a][b].posbl[value] = 1;
+			{
+				if (puzl->cell[a][b].posbl[value] == 0)
+				{
+					puzl->cell[a][b].posbl[value] = 1;
+					puzl->cell[a][b].count--;
+				}
+			}
 		}
-		else
+		else if (puzl->cell[a][j].posbl[value] == 0)
+		{
 			puzl->cell[a][j].posbl[value] = 1;
+			puzl->cell[a][j].count--;
+		}
 	}
 }
 

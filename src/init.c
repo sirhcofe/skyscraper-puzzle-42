@@ -48,7 +48,7 @@ int	visibility_init(t_puzzle *puzl, int size, char **argv)
 
 	puzl->vsby = malloc(sizeof(int *) * 4);
 	i = -1;
-	while (++i < size)
+	while (++i < 4)
 		puzl->vsby[i] = malloc(sizeof(int) * size);
 	count = 1;
 	i = -1;

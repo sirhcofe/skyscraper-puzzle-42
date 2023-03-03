@@ -6,9 +6,11 @@ void	ft_free(t_puzzle *puzl)
 	int	j;
 
 	i = -1;
+	while (++i < 4)
+		free(puzl->vsby[i]);
+	i = -1;
 	while (++i < puzl->size)
 	{
-		free(puzl->vsby[i]);
 		j = -1;
 		while (++j < puzl->size)
 			free(puzl->cell[i][j].posbl);

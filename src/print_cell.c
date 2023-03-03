@@ -54,3 +54,19 @@ void	print_cells(t_puzzle *puzl)
 		i++;
 	}
 }
+
+void	print_posbl_candidate(t_puzzle *puzl)
+{
+	int	i;
+	int	j;
+
+	printf("\n");
+	i = -1;
+	while (++i < puzl->size)
+	{
+		j = -1;
+		while (++j < puzl->size)
+			printf("%d ", puzl->cell[i][j].count);
+		printf("\n");
+	}
+}
