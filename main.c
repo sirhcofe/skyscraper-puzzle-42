@@ -44,19 +44,18 @@ int	main(int argc, char **argv)
 {
 	t_puzzle	*puzl;
 	int			size;
+	int			ret;
 
+	ret = 0;
 	size = check_args(argc, argv);
 	if (size == -1)
 		return (error(1));
 	puzl = init(size, argv);
 	if (puzl == NULL)
 		return (error(2));
-	if (solve_edge_clues(puzl))
-	{
-		print_cells(puzl);
-		return (error(3));
-	}
+	if (solve_edge_clues(puzl) || solve_rest(puzl))
+		ret = error(3);
 	ft_free(puzl);
 	free(puzl);
-	return (0);
+	return (ret);
 }

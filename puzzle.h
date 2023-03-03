@@ -25,6 +25,13 @@ typedef struct s_puzzle
 	t_map		**cell;
 }				t_puzzle;
 
+typedef struct s_node
+{
+	t_puzzle	puzl;
+	t_node		*parent;
+	t_node		**child;
+}				t_node;
+
 // initial checking and parsing
 int			check_args(int argc, char **argv);
 t_puzzle	*init(int size, char **argv);
@@ -37,6 +44,9 @@ int 		assign_candidate(t_puzzle *puzl, int row, int col, int value);
 
 // update clues row/column-wise after assigning values in cell of the same row/column
 void		update_possbl(t_puzzle *puzl, int i, int j, int value);
+
+// A* heuristic method
+int			solve_rest(t_puzzle *puzl);
 
 // utils
 int			ft_atoi(const char *str);
