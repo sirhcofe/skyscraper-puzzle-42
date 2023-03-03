@@ -10,9 +10,14 @@ OBJS		=	$(addprefix $(OBJS_DIR), $(notdir $(SRC:.c=.o)))
 
 SRC			=	check_args.c		\
 				init.c				\
-				ft_atoi.c
+				ft_atoi.c			\
+				edge_clues.c		\
+				solve_rest.c		\
+				assign_candidate.c	\
+				print_cell.c
 
-SRC_DIR		=	src
+SRC_DIR		=	src				\
+				src/heuristic
 
 vpath %.c $(SRC_DIR)
 
@@ -20,7 +25,7 @@ all:			$(NAME)
 
 $(NAME):		main.c $(ARC)
 			@echo "Compiling: main.c"
-			$(CC) $(FLAGS) -I. main.c $(OBJS) -o $(NAME)
+			$(CC) $(FLAGS) -fsanitize=address -g3 -I. main.c $(OBJS) -o $(NAME)
 
 $(ARC):			$(OBJS)
 			@ar rc $(ARC) $(OBJS)
